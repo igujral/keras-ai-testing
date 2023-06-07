@@ -23,10 +23,8 @@ np.random.seed(0)
 """# Data"""
 
 from keras.datasets import mnist
+# Initial Data Version
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-
-print(x_train.shape, y_train.shape)
-print(x_test.shape, y_test.shape)
 
 """# Visualize Examples"""
 
@@ -38,14 +36,9 @@ for i in range(0, num_classes):
   ax[i].imshow(sample, cmap='gray')
   ax[i].set_title("Label: {}".format(i), fontsize=16)
 
-for i in range(10):
-  print(y_train[i])
-
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
-for i in range(10):
-  print(y_train[i])
 
 """# Prepare Data"""
 
@@ -83,8 +76,7 @@ print("Test Loss: {}, Test Accuracy: {}".format(test_loss, test_acc))
 
 y_pred = model.predict(x_test)
 y_pred_classes = np.argmax(y_pred, axis=1)
-print(y_pred)
-print(y_pred_classes)
+
 
 # Single Example
 random_idx = np.random.choice(len(x_test))
